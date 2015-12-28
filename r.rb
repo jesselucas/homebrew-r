@@ -15,6 +15,10 @@ class R < Formula
     system "go", "build", "-o", "#{bin}/r", "-v", "github.com/jesselucas/r/"
   end
 
+  def caveats; <<-EOS.undent
+    `r` has succesfully installed. Please restart your Bash shell.
+    EOS
+  end
 
   test do
     actual = system("r -install")
@@ -24,10 +28,5 @@ class R < Formula
       actual == expected
       actualVersion == version
     end
-  end
-
-  def caveats; <<-EOS.undent
-    `r` has succesfully installed. Please restart your Bash shell.
-    EOS
   end
 end
