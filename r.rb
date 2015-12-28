@@ -20,10 +20,14 @@ class R < Formula
     actual = system("r -install")
     expected = true
     actualVersion = pipe_output("#{bin}/r -version")
-    # assert_equal expected, actual
     assert_block do
       actual == expected
       actualVersion == version
     end
+  end
+
+  def caveats; <<-EOS.undent
+    `r` has succesfully installed. Please restart your Bash shell.
+    EOS
   end
 end
